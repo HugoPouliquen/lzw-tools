@@ -5,6 +5,9 @@ LZW tools for compress &amp; uncompress
 
 Build in Python 3
 
+# Resources
+[Lempel-Ziv-Welch](https://fr.wikipedia.org/wiki/Lempel-Ziv-Welch)
+
 # Run
 - Compress text
 ```bash
