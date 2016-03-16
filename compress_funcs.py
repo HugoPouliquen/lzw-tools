@@ -10,16 +10,51 @@ def make_dict():
 
 
 def compress(text):
-    w = ''
+    w = fstr = ''
     dictCompress, dictionaryAsciiSize = make_dict()
-    compress = []
+    compressed = []
     for c in text:
         res = w + c
         if res in dictCompress:
             w = w + c
         else:
-            compress.append(dictCompress[w])
+            compressed.append(dictCompress[w])
             dictCompress[res] = dictionaryAsciiSize
             dictionaryAsciiSize += 1
             w = c
-    return compress
+    return compressed
+
+
+# def byte_transformed(text):
+#     bList = []
+#     for item in text:
+#         bList.append(bytes(str(item), 'UTF-8'))
+#     print(bList)
+#     return bList
+
+
+def input(filename):
+    f = open(filename, 'r')
+    content = f.read()
+    f.close()
+    compressed = compress(content)
+    filename = output(compressed, 'compressed.lzw')
+    # bList = byte_transformed(compressed)
+    # filename = output(bList, 'compressed.lzw')
+    return filename
+
+
+def output(text, filename):
+    f = open(filename, 'w')
+    for item in text:
+        f.write(str(item))
+        f.write(' ')
+    f.close()
+    return filename
+
+    # fb = open(filename, 'wb')
+    # for item in bList:
+    #     fb.write(item)
+    #     fb.write(bytes(' ', 'UTF-8'))
+    # fb.close()
+    # return filename
