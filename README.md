@@ -14,6 +14,11 @@ Build in Python 3
 [lzw-tools] $ python3 sample.py -t TOBEORNOTTOBEORTOBEORNOT
 # OUTPUT => ['T', 'O', 'B', 'E', 'O', 'R', 'N', 'O', 'T', 256, 258, 260, 265, 259, 261]
 ```
+- Compress file.txt
+```bash
+[lzw-tools] $ python3 sample.py -f to_compress.txt
+# OUTPUT => Your content has compressed in: compressed.lzw
+```
 
 # Tests
 ```bash
