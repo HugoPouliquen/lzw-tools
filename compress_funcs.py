@@ -1,3 +1,6 @@
+from os.path import basename
+from os.path import splitext
+
 def make_dict():
     dictionaryAsciiSize = 256
     dictionnary = {}
@@ -32,13 +35,17 @@ def compress(text):
 #     print(bList)
 #     return bList
 
+def filename_extracted(filename):
+    base = basename(filename)
+    name = splitext(base)[0]
+    return name
 
 def input(filename):
     f = open(filename, 'r')
     content = f.read()
     f.close()
     compressed = compress(content)
-    filename = output(compressed, 'compressed.lzw')
+    filename = output(compressed, filename_extracted(filename) + '.lzw')
     # bList = byte_transformed(compressed)
     # filename = output(bList, 'compressed.lzw')
     return filename

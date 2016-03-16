@@ -16,8 +16,8 @@ Build in Python 3
 ```
 - Compress file.txt
 ```bash
-[lzw-tools] $ python3 sample.py -f to_compress.txt
-# OUTPUT => Your content has compressed in: compressed.lzw
+[lzw-tools] $ python3 sample.py -f file.txt
+# OUTPUT => Your content has compressed in: file.lzw
 ```
 
 # Tests

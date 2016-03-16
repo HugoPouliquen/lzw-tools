@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 
-to_compress.txt
-compressed.lzw
+file.txt
+*.lzw
