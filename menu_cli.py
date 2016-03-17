@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-
 import curses
-
+from utils.file_manager import file_treat
+from utils.compression import compress
+from curses.textpad import Textbox, rectangle
 
 def init_curses():
     stdsrc = curses.initscr()
@@ -60,13 +61,13 @@ def getKey(final, title, menu, window, active_pos=1):
 
     return active_pos
 
-# if __name__ == "__main___":
+# if __name__ == '__main__':
 try:
     stdsrc = init_curses()
     init_colors()
 
     window = curses.newwin(40, 79, 3, 5)
-    # window = stdsrc.subwin(40, 79, 3, 5)
+    # window = stdsrc.subwin(40, 79, 3, 5) -> DON'T WORK
     window.border(0)
 
     menu_list = ('Fichier', 'Phrase', 'Quitter')
@@ -74,13 +75,27 @@ try:
     display_menu(title, menu_list, window)
 
     choice = getKey(len(menu_list), title, menu_list, window)
+
     window.addstr(
         len(menu_list) + 5, 1, "Choix : %s (%d)"
         % (menu_list[choice-1], choice)
     )
+    if choice == 2:
+        window.addstr(
+            9, 9, 'Insérer la phrase à compresser : (hit Ctrl-G to send)'
+        )
+        editwin = curses.newwin(3, 70, 15, 9)
+        rectangle(window, 11, 3, 15, 75)
+        window.refresh()
+        box = Textbox(editwin)
+        box.edit()
+        string = box.gather()
+        window.addstr(
+            17, 2, 'Résultat de la compression %s' % compress(string)
+        )
+    # elif choice == 2:
     window.addstr(
-        len(menu_list) + 6, 1,
-        "Ce n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
+        20, 2, "\nCe n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
     )
     window.refresh()
     c = window.getch()

@@ -8,7 +8,14 @@ Build in Python 3
 # Resources
 [Lempel-Ziv-Welch](https://fr.wikipedia.org/wiki/Lempel-Ziv-Welch)
 
-# Run
+# Run with cli-menu
+In `sample.py` **UNCOMENT** `import menu_cli` & **COMENT** `import cli`
+```bash
+[lzw-tools] $ python3 sample.py
+```
+
+# Run with cli
+In `sample.py` **UNCOMENT**  `import cli` & **COMENT** `import menu_cli`
 - Compress text
 ```bash
 [lzw-tools] $ python3 sample.py -t TOBEORNOTTOBEORTOBEORNOT
