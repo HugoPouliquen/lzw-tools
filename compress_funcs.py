@@ -1,13 +1,12 @@
 from os.path import basename
 from os.path import splitext
 
+
 def make_dict():
     dictionaryAsciiSize = 256
     dictionnary = {}
-
     # For each value return his string. chr(97) -> 'a'
     for i in range(dictionaryAsciiSize):
-        # Build dictionnary
         dictionnary[chr(i)] = chr(i)
     return dictionnary, dictionaryAsciiSize
 
@@ -35,20 +34,26 @@ def compress(text):
 #     print(bList)
 #     return bList
 
+
 def filename_extracted(filename):
     base = basename(filename)
     name = splitext(base)[0]
     return name
 
-def input(filename):
-    f = open(filename, 'r')
-    content = f.read()
-    f.close()
+
+def file(content, filename):
     compressed = compress(content)
     filename = output(compressed, filename_extracted(filename) + '.lzw')
     # bList = byte_transformed(compressed)
     # filename = output(bList, 'compressed.lzw')
     return filename
+
+
+def input(filename):
+    f = open(filename, 'r')
+    content = f.read()
+    f.close()
+    return file(content, filename)
 
 
 def output(text, filename):
