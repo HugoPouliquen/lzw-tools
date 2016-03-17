@@ -1,9 +1,10 @@
 import cli
-import compress_funcs
+from utils.compression import compress
+from utils.file_manager import file_treat
 
 args = cli.parser.parse_args()
 
 if args.text:
-    print(compress_funcs.compress(args.string))
+    print(compress(args.string))
 elif args.file:
-    print("Your content has compressed in:", compress_funcs.input(args.string))
+    print("Your content has compressed in:", file_treat(args.string))

@@ -22,7 +22,7 @@ Build in Python 3
 
 # Tests
 ```bash
-[lzw-tools] $ python3 -m compress_test
+[lzw-tools] $ python3 -m tests.compress_test
 # OUTPUT =>
 # .
 # ----------------------------------------------------------------------
