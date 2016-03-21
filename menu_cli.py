@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 import curses
+from curses.textpad import Textbox, rectangle
 from utils.file_manager import file_treat
 from utils.compression import compress
-from curses.textpad import Textbox, rectangle
+from utils.pretty import pretty_compression
+from libs.curses_browser import open_tty
+from libs.curses_browser import restore_stdio
+from libs.curses_browser import main
 
 def init_curses():
     stdsrc = curses.initscr()
@@ -61,7 +65,6 @@ def getKey(final, title, menu, window, active_pos=1):
 
     return active_pos
 
-# if __name__ == '__main__':
 try:
     stdsrc = init_curses()
     init_colors()
@@ -91,11 +94,17 @@ try:
         box.edit()
         string = box.gather()
         window.addstr(
-            17, 2, 'Résultat de la compression %s' % compress(string)
+            17, 2, 'Résultat de la compression %s' % pretty_compression(compress(string))
         )
-    # elif choice == 2:
+    elif choice == 1:
+        saved_fds, saved_stdout = open_tty()
+        try:
+            path = curses.wrapper(main)
+        finally:
+            restore_stdio(saved_fds, saved_stdout)
+        file_treat(path)
     window.addstr(
-        20, 2, "\nCe n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
+        38, 2, "Ce n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
     )
     window.refresh()
     c = window.getch()
