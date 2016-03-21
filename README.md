@@ -29,6 +29,7 @@ In `sample.py` **UNCOMENT**  `import cli` & **COMENT** `import menu_cli`
 
 # Tests
 ```bash
+[lzw-tools] $ python3 -m tests.pretty_test
 [lzw-tools] $ python3 -m tests.compress_test
 # OUTPUT =>
 # .

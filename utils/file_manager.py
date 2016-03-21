@@ -1,24 +1,18 @@
-from os.path import basename
 from os.path import splitext
 from utils.compression import compress
 from utils.pretty import pretty_compression
 
 
-def file_treat(path):
+def file_compression(path):
     content = input(path)
     compressed = compress(content)
-    filename = output(compressed, filename_extract(path) + '.lzw')
-    return filename
+    filename, file_extension = splitext(path)
+    lzw_file = output(pretty_compression(compressed), filename + '.lzw')
+    return lzw_file
 
 
-def filename_extract(filename):
-    base = basename(filename)
-    name = splitext(base)[0]
-    return name
-
-
-def input(filename):
-    f = open(filename, 'r')
+def input(path):
+    f = open(path, 'r')
     content = f.read()
     f.close()
     return content
@@ -26,6 +20,6 @@ def input(filename):
 
 def output(text, filename):
     f = open(filename, 'w')
-    f.write(pretty_compression(text))
+    f.write(text)
     f.close()
     return filename

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import curses
 from curses.textpad import Textbox, rectangle
-from utils.file_manager import file_treat
+from utils.file_manager import file_compression
 from utils.compression import compress
 from utils.pretty import pretty_compression
 from libs.curses_browser import open_tty
@@ -102,7 +102,7 @@ try:
             path = curses.wrapper(main)
         finally:
             restore_stdio(saved_fds, saved_stdout)
-        file_treat(path)
+        file_compression(path)
     window.addstr(
         38, 2, "Ce n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
     )
