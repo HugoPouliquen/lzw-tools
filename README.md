@@ -1,5 +1,6 @@
 # lzw-tools
 [![Circle CI](https://circleci.com/gh/HugoPouliquen/lzw-tools.svg?style=shield)](https://circleci.com/gh/HugoPouliquen/lzw-tools)
+[![Code Climate](https://codeclimate.com/github/HugoPouliquen/lzw-tools/badges/gpa.svg)](https://codeclimate.com/github/HugoPouliquen/lzw-tools)
 
 LZW tools for compress &amp; uncompress
 
