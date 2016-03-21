@@ -85,7 +85,7 @@ try:
     )
     if choice == 2:
         window.addstr(
-            9, 9, 'Insérer la phrase à compresser : (hit Ctrl-G to send)'
+            9, 9, 'Insérez la phrase à compresser : (hit Ctrl-G to send)'
         )
         editwin = curses.newwin(3, 70, 15, 9)
         rectangle(window, 11, 3, 15, 75)

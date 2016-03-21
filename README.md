@@ -13,6 +13,7 @@ In `sample.py` **UNCOMENT** `import menu_cli` & **COMENT** `import cli`
 ```bash
 [lzw-tools] $ python3 sample.py
 ```
+![](img/preview.png?raw=true)
 
 # Run with cli
 In `sample.py` **UNCOMENT**  `import cli` & **COMENT** `import menu_cli`
