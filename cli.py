@@ -1,5 +1,5 @@
 import argparse
-from utils.file_manager import file_treat
+from utils.compression import file_compression
 from utils.compression import compress
 
 parser = argparse.ArgumentParser(description='Compress LZW tool')
@@ -16,4 +16,4 @@ args = parser.parse_args()
 if args.text:
     print(compress(args.string))
 elif args.file:
-    print("Your content has compressed in:", file_treat(args.string))
+    print("Your content has compressed in:", file_compression(args.string))

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import curses
 from curses.textpad import Textbox, rectangle
-from utils.file_manager import file_compression
+from utils.compression import file_compression
 from utils.compression import compress
 from utils.pretty import pretty_compression
 from libs.curses_browser import open_tty
