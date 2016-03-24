@@ -19,22 +19,20 @@ def uncompress(compressed):
     compressed.remove(compressed[0])
     compressed.remove(compressed[0])
 
-    print(chr(int.from_bytes(w, byteorder='big')))
-    print(compressed)
-    # print(int.from_bytes(compressed, byteorder='big'))
     for byte in compressed:
         if byte in listAscii:
-            entry = listAscii.index(byte)
+            entry = byte
         elif (int.from_bytes(byte, byteorder='big')) == listAsciiSize:
             entry = w + w  # ERREUR
         else:
             raise ValueError('Bad compressed for: %s' % byte)
+        print(w)
         uncompressed.append(chr(int.from_bytes(entry, byteorder='big')))
 
         listAscii.insert(listAsciiSize, w + byte)
         listAsciiSize += 1
         w = entry
-    print(uncompressed)
+    #print(uncompressed)
 
 
 def file_uncompressed(path):
