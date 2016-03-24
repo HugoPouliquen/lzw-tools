@@ -2,31 +2,32 @@ from utils.file_manager import output
 from utils.file_manager import inputcontent
 from os.path import splitext
 
+
 # For each value return his string. chr(97) -> 'a'
-def make_dict():
-    dictionaryAsciiSize = 256
-    dictionnary = {}
-    for i in range(dictionaryAsciiSize):
-        dictionnary[chr(i)] = chr(i)
-    return dictionnary, dictionaryAsciiSize
+def make_list():
+    listAsciiSize = 255
+    listAscii = []
+    for i in range(listAsciiSize):
+        listAscii.insert(i, i.to_bytes(2, 'big'))
+    return listAscii, listAsciiSize
 
 
 def compress(text):
-    w = fstr = ''
-    dictCompress, dictionaryAsciiSize = make_dict()
+    w = (0).to_bytes(2, 'big')
+    listAscii, listAsciiSize = make_list()
     compressed = []
     for c in text:
-        res = w + c
-        if res in dictCompress:
-            w = w + c
+        c = c.to_bytes(2, 'big')
+        wc = w + c
+        if wc in listAscii:
+            w = wc
         else:
-            if type(dictCompress[w]) == bytes:
-                compressed.append(dictCompress[w])
-            else:
-                compressed.append(dictCompress[w].encode())
-            dictCompress[res] = (dictionaryAsciiSize).to_bytes(2, 'little')
-            dictionaryAsciiSize += 1
+            listAscii.insert(listAsciiSize, wc)
+            compressed.append(listAscii.index(w).to_bytes(2, 'big'))
+            listAsciiSize += 1
             w = c
+            # compressed.append(listAscii(int.from_bytes(w, byteorder='big')))
+            # listAscii.insert(wc,(listAsciiSize).to_bytes(2, 'big'))
     return compressed
 
 

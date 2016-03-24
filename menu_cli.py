@@ -3,7 +3,6 @@ import curses
 from curses.textpad import Textbox, rectangle
 from utils.compression import file_compression
 from utils.compression import compress
-from utils.pretty import pretty_compression
 from libs.curses_browser import open_tty
 from libs.curses_browser import restore_stdio
 from libs.curses_browser import main
@@ -69,7 +68,7 @@ try:
     stdsrc = init_curses()
     init_colors()
 
-    window = curses.newwin(40, 79, 3, 5)
+    window = curses.newwin(36, 79, 3, 5)
     # window = stdsrc.subwin(40, 79, 3, 5) -> DON'T WORK
     window.border(0)
 
@@ -79,10 +78,6 @@ try:
 
     choice = getKey(len(menu_list), title, menu_list, window)
 
-    window.addstr(
-        len(menu_list) + 5, 1, "Choix : %s (%d)"
-        % (menu_list[choice-1], choice)
-    )
     if choice == 2:
         window.addstr(
             9, 9, 'Insérez la phrase à compresser : (hit Ctrl-G to send)'
@@ -94,17 +89,19 @@ try:
         box.edit()
         string = box.gather()
         window.addstr(
-            17, 2, 'Résultat de la compression %s' % pretty_compression(compress(string))
+            17, 2, 'Résultat de la compression %s' % compress(string)
         )
     elif choice == 1:
         saved_fds, saved_stdout = open_tty()
         try:
-            path = curses.wrapper(main)
+            path = curses.wrapper(main) # launch new window
         finally:
+            lzw = file_compression(path)
             restore_stdio(saved_fds, saved_stdout)
-        file_compression(path)
+            close_curses(stdsrc)
+            print('Your content has compressed in:', lzw)
     window.addstr(
-        38, 2, "Ce n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
+        34, 2, "Ce n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
     )
     window.refresh()
     c = window.getch()

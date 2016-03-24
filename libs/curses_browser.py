@@ -22,8 +22,8 @@ start = '.'
 
 ESC = 27
 
+
 def pad(data, width):
-    # XXX this won't work with UTF-8
     return data + ' ' * (width - len(data))
 
 
@@ -110,6 +110,10 @@ def main(stdscr):
         for data, depth in mydir.traverse():
             if line == curidx:
                 stdscr.attrset(curses.color_pair(1) | curses.A_BOLD)
+                stdscr.addstr(
+                    0, 0, 'Utilisez ↓ ↑ pour vous déplacer et ← →  pour rentrer \
+dans un dossier. Appuyez sur entré quand vous avez choisi \n'
+                )
                 if pending_action:
                     getattr(data, pending_action)()
                     pending_action = None
@@ -145,7 +149,8 @@ def main(stdscr):
         elif ch == ord('\n'):
             pending_save = True
         curidx %= line
-        
+
+
 def cargo_cult_routine(win):
     win.clear()
     win.refresh()
