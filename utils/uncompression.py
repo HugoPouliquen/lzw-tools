@@ -4,7 +4,7 @@ from os.path import splitext
 
 
 def make_list():
-    listAsciiSize = 255
+    listAsciiSize = 256
     listAscii = []
     for i in range(listAsciiSize):
         listAscii.insert(i, i.to_bytes(2, 'big'))
@@ -14,31 +14,32 @@ def make_list():
 def uncompress(compressed):
     listAscii, listAsciiSize = make_list()
     uncompressed = []
-
+    f = open('decode.txt', 'wb')
     w = compressed[1]
     compressed.remove(compressed[0])
     compressed.remove(compressed[0])
-
+    f.write(w)
     for byte in compressed:
-        if byte in listAscii:
-            entry = byte
+        if int.from_bytes(byte, byteorder='big') < listAsciiSize :
+            entry = listAscii[int.from_bytes(byte, byteorder='big')]
         elif (int.from_bytes(byte, byteorder='big')) == listAsciiSize:
             entry = w + w  # ERREUR
         else:
-            raise ValueError('Bad compressed for: %s' % byte)
-        print(w)
-        uncompressed.append(chr(int.from_bytes(entry, byteorder='big')))
+            raise ValueError('Bad uncompressed for: %s' % byte)
+        print(entry)
+        f.write(entry)
 
         listAscii.insert(listAsciiSize, w + byte)
         listAsciiSize += 1
         w = entry
-    #print(uncompressed)
+    f.close()
+    print(uncompressed)
 
 
 def file_uncompressed(path):
     f = open(path, "rb")
     content = []
-    for i in range(20):
+    for i in range(17):
         content.insert(i, f.read(2))
     uncompress(content)
     f.close()

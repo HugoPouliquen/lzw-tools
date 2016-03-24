@@ -5,7 +5,7 @@ from os.path import splitext
 
 # For each value return his string. chr(97) -> 'a'
 def make_list():
-    listAsciiSize = 255
+    listAsciiSize = 256
     listAscii = []
     for i in range(listAsciiSize):
         listAscii.insert(i, i.to_bytes(2, 'big'))
@@ -26,8 +26,6 @@ def compress(text):
             compressed.append(listAscii.index(w).to_bytes(2, 'big'))
             listAsciiSize += 1
             w = c
-            # compressed.append(listAscii(int.from_bytes(w, byteorder='big')))
-            # listAscii.insert(wc,(listAsciiSize).to_bytes(2, 'big'))
     return compressed
 
 
