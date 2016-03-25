@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 import curses
 from curses.textpad import Textbox, rectangle
-from utils.compression import file_compression
-from utils.compression import compress
 from libs.curses_browser import open_tty
 from libs.curses_browser import restore_stdio
 from libs.curses_browser import main
+from utils.compression import compress
+from utils.compression import file_compression
+from utils.decompression import decompress
+from utils.decompression import file_decompression
+
 
 def init_curses():
     stdsrc = curses.initscr()
@@ -68,43 +71,37 @@ try:
     stdsrc = init_curses()
     init_colors()
 
-    window = curses.newwin(36, 79, 3, 5)
-    # window = stdsrc.subwin(40, 79, 3, 5) -> DON'T WORK
+    window = curses.newwin(19, 79, 3, 5)
     window.border(0)
 
-    menu_list = ('Fichier', 'Phrase', 'Quitter')
-    title = 'Que voulez vous compresser ?'
+    menu_list = ('Compression', 'Décompression', 'Quitter')
+    title = 'LZW tools - Quelle sera votre voie ?'
     display_menu(title, menu_list, window)
 
     choice = getKey(len(menu_list), title, menu_list, window)
 
-    if choice == 2:
-        window.addstr(
-            9, 9, 'Insérez la phrase à compresser : (hit Ctrl-G to send)'
-        )
-        editwin = curses.newwin(3, 70, 15, 9)
-        rectangle(window, 11, 3, 15, 75)
-        window.refresh()
-        box = Textbox(editwin)
-        box.edit()
-        string = box.gather()
-        window.addstr(
-            17, 2, 'Résultat de la compression %s' % compress(string)
-        )
-    elif choice == 1:
+    if choice == 1:
+            saved_fds, saved_stdout = open_tty()
+            try:
+                path = curses.wrapper(main) # launch new window
+            finally:
+                lzw = file_compression(path)
+                restore_stdio(saved_fds, saved_stdout)
+                close_curses(stdsrc)
+                print('Your content has compressed in:', lzw)
+    elif choice == 2:
         saved_fds, saved_stdout = open_tty()
         try:
-            path = curses.wrapper(main) # launch new window
+            path = curses.wrapper(main)
         finally:
-            lzw = file_compression(path)
+            original = file_decompression(path)
             restore_stdio(saved_fds, saved_stdout)
             close_curses(stdsrc)
-            print('Your content has compressed in:', lzw)
+            print('Your content has decompressed in:', original)
     window.addstr(
-        34, 2, "Ce n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
+        17, 2, "Ce n'est qu'un au-revoir ! (Appuyez sur une touche tu dois)"
     )
     window.refresh()
     c = window.getch()
 finally:
-    # Fermeture de curses
     close_curses(stdsrc)

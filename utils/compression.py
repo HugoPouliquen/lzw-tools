@@ -1,22 +1,14 @@
-from utils.file_manager import output
-from utils.file_manager import inputcontent
 from os.path import splitext
+from utils.file_manager import output
+from utils.file_manager import input_content
+from utils.make_list import byte_list
 
 
-# For each value return his string. chr(97) -> 'a'
-def make_list():
-    listAsciiSize = 256
-    listAscii = []
-    for i in range(listAsciiSize):
-        listAscii.insert(i, i.to_bytes(2, 'big'))
-    return listAscii, listAsciiSize
-
-
-def compress(text):
+def compress(bytes_text):
     w = bytes()
-    listAscii, listAsciiSize = make_list()
+    listAscii, listAsciiSize = byte_list()
     compressed = []
-    for c in text:
+    for c in bytes_text:
         c = c.to_bytes(2, 'big')
         wc = w + c
         if wc in listAscii:
@@ -30,8 +22,8 @@ def compress(text):
 
 
 def file_compression(path):
-    content = inputcontent(path)
-    compressed = compress(content)
+    content = input_content(path)
     filename, file_extension = splitext(path)
+    compressed = compress(content)
     lzw_file = output(compressed, filename + '.lzw')
     return lzw_file

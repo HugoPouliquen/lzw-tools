@@ -1,4 +1,4 @@
-def inputcontent(path):
+def input_content(path):
     f = open(path, 'rb')
     content = f.read()
     f.close()

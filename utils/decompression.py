@@ -1,53 +1,43 @@
-from utils.file_manager import output
-from utils.file_manager import inputcontent
 from os.path import splitext
 from os.path import getsize
 
-def make_list():
-    listAsciiSize = 256
-    listAscii = []
-    for i in range(listAsciiSize):
-        listAscii.insert(i, i.to_bytes(2, 'big'))
-    return listAscii, listAsciiSize
 
-
-def decompress(compressed):
-    listAscii, listAsciiSize = make_list()
+def decompress(compressed, path):
+    listAscii, listAsciiSize = byte_list()
     uncompressed = []
-    f = open('decode.txt', 'wb')
+    i = 0
+    filename, file_extension = splitext(path)
+    f = open(filename + '.txt2', 'wb')
     w = compressed[0]
     compressed.remove(compressed[0])
-    i = 0
 
     f.write(w)
-    for byte in compressed:
-        if int.from_bytes(byte, byteorder='big') < listAsciiSize:
-            entry = listAscii[int.from_bytes(byte, byteorder='big')]
-        elif (int.from_bytes(byte, byteorder='big')) == listAsciiSize:
+    for byte_element in compressed:
+        int_element = int.from_bytes(byte_element, byteorder='big')
+
+        if int_element < listAsciiSize:
+            entry = listAscii[int_element]
+        elif int_element == listAsciiSize:
             entry = w + w  # ERREUR
         else:
-            raise ValueError('Bad uncompressed for: %s' % byte)
+            raise ValueError('Bad uncompressed for: %s' % byte_element)
 
-        print(entry)
-        for b in entry:
+        for byte in entry:
             if i % 2 == 1:
-                f.write(b.to_bytes(1, byteorder='big'))
+                f.write(byte.to_bytes(1, byteorder='big'))
             i += 1
 
-        listAscii.insert(listAsciiSize, w + byte)
+        listAscii.insert(listAsciiSize, w + byte_element)
         listAsciiSize += 1
         w = entry
     f.close()
+    return filename + '.txt2'
 
 
-def file_decompressed(path):
+def file_decompression(path):
     f = open(path, "rb")
     content = []
     for i in range(int(getsize(path)/2)):
         content.insert(i, f.read(2))
-    decompress(content)
     f.close()
-
-    # filename, file_extension = splitext(path)
-    # original_file = output(uncompressed, filename + '.txt')
-    # return original_file
+    return decompress(content, path)

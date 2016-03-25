@@ -112,7 +112,7 @@ def main(stdscr):
                 stdscr.attrset(curses.color_pair(1) | curses.A_BOLD)
                 stdscr.addstr(
                     0, 0, 'Utilisez ↓ ↑ pour vous déplacer et ← →  pour rentrer \
-dans un dossier. Appuyez sur entré quand vous avez choisi \n'
+dans un dossier. Appuyez sur entrer quand vous avez choisi \n'
                 )
                 if pending_action:
                     getattr(data, pending_action)()
