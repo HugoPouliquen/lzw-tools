@@ -2,14 +2,14 @@
 [![Circle CI](https://circleci.com/gh/HugoPouliquen/lzw-tools.svg?style=shield)](https://circleci.com/gh/HugoPouliquen/lzw-tools)
 [![Code Climate](https://codeclimate.com/github/HugoPouliquen/lzw-tools/badges/gpa.svg)](https://codeclimate.com/github/HugoPouliquen/lzw-tools)
 
-LZW tools for compress &amp; uncompress
+LZW tools for compress &amp; decompress
 
 Build in Python 3
 
 # Resources
 [Lempel-Ziv-Welch](https://fr.wikipedia.org/wiki/Lempel-Ziv-Welch)
 
-# TODO:
+# Todo:
 - Compression
     - [x] Compress file
     - [ ] File compress less than base
@@ -31,7 +31,7 @@ Build in Python 3
 ![](img/preview.png?raw=true)
 
 If you want run simple cli, follow this instructions :
-- In `sample.py` **UNCOMENT**  `import cli` & **COMENT** `import menu_cli`
+- In `sample.py` **uncomment**  `import cli` and  **comment** `# import menu_cli`
 ```bash
 [lzw-tools] $ python3 sample.py compress -t TOBEORNOTTOBEORTOBEORNOT
 # OUTPUT => ['T', 'O', 'B', 'E', 'O', 'R', 'N', 'O', 'T', 256, 258, 260, 265, 259, 261]
