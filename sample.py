@@ -1,2 +1,2 @@
-#import menu_cli
 import cli
+# import menu_cli

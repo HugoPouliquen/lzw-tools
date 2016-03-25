@@ -11,7 +11,7 @@ def make_list():
     return listAscii, listAsciiSize
 
 
-def uncompress(compressed):
+def decompress(compressed):
     listAscii, listAsciiSize = make_list()
     uncompressed = []
     f = open('decode.txt', 'wb')
@@ -36,12 +36,12 @@ def uncompress(compressed):
     print(uncompressed)
 
 
-def file_uncompressed(path):
+def file_decompressed(path):
     f = open(path, "rb")
     content = []
     for i in range(17):
         content.insert(i, f.read(2))
-    uncompress(content)
+    decompress(content)
     f.close()
 
     # filename, file_extension = splitext(path)
