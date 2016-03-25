@@ -14,9 +14,9 @@ subparser.add_argument('-t', '--text', help='compress string', action='store_tru
 subparser.add_argument('-f', '--file', help='compress file.txt', action='store_true')
 subparser.add_argument('string', help='to compress')
 
-subparser = subparsers.add_parser('uncompress', help='run uncompression')
-subparser.add_argument('-t', '--text', help='uncompress string', action='store_true')
-subparser.add_argument('-f', '--file', help='uncompress file.lzw', action='store_true')
+subparser = subparsers.add_parser('decompress', help='run decompression')
+subparser.add_argument('-t', '--text', help='decompress string', action='store_true')
+subparser.add_argument('-f', '--file', help='decompress file.lzw', action='store_true')
 subparser.add_argument("string", help="to compress")
 
 args = parser.parse_args()
@@ -25,7 +25,7 @@ if args.command == 'compress':
         print(compress(args.string))
     elif args.file:
         print('Your content has compressed in:', file_compression(args.string))
-elif args.command == 'uncompress':
+elif args.command == 'decompress':
     if args.text:
         print(decompress(args.string))
     elif args.file:
