@@ -13,7 +13,7 @@ def make_list():
 
 
 def compress(text):
-    w = (0).to_bytes(2, 'big')
+    w = bytes()
     listAscii, listAsciiSize = make_list()
     compressed = []
     for c in text:

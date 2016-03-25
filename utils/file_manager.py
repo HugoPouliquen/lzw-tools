@@ -5,15 +5,6 @@ def inputcontent(path):
     return content
 
 
-# def inputbyte(path):
-#     f = open(path, "rb")
-#     while True:
-#         bytes = f.read(2)
-#         if bytes == b'':
-#             break;
-#         print(bytes)
-#     f.close()
-
 def output(text, filename):
     f = open(filename, 'wb')
     for item in text:
