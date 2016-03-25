@@ -23,6 +23,7 @@ Build in Python 3
     - [x] Decompress file
     - [x] Write decompressed content in original file
     - [x] File decompressed size is equal to original file
+    - [ ] File decompressed content is equal to original content
     - [ ] Get extension information in compressed file
 - Tests
     - [x] Ascii byte list
