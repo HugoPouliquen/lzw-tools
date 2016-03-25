@@ -9,7 +9,7 @@ Build in Python 3
 # Resources
 [Lempel-Ziv-Welch](https://fr.wikipedia.org/wiki/Lempel-Ziv-Welch)
 
-### TODO:
+# TODO:
 - Compression
     - [x] Compress file
     - [ ] File compress less than base
