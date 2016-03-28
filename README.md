@@ -4,12 +4,12 @@
 
 LZW tools for compress &amp; decompress
 
-Build in Python 3
+Build in **Python 3**
 
-# Resources
+## Resources
 [Lempel-Ziv-Welch](https://fr.wikipedia.org/wiki/Lempel-Ziv-Welch)
 
-# Todo:
+## Todo:
 - Compression
     - [x] Build Ascii byte list
     - [x] Open file in byte
@@ -32,22 +32,15 @@ Build in Python 3
     - [x] Automatically build tests : CirleCi
     - [x] Code quality : CodeClimate
 
-# Run with cli-menu
+## Run with cli-menu
 ```bash
 [lzw-tools] $ python3 sample.py
 ```
-- Menu
 
-    ![](img/menu_preview.png?raw=true)
-
-- File browser
-
-    ![](img/browser_preview.png?raw=true)
-
-# Run with cli
+## Run with simple cli
 
 If you want run simple cli, follow this instructions :
-- In `sample.py` **uncomment**  `import cli` and  **comment** `# import menu_cli`
+- In `sample.py` file **uncomment**  `import cli` and  **comment** `# import menu_cli`
 ```bash
 [lzw-tools] $ python3 sample.py compress -f file.txt
 # OUTPUT => Your content has compressed in: file.lzw
@@ -55,7 +48,7 @@ If you want run simple cli, follow this instructions :
 # OUTPUT => Your content is in: file.txt
 ```
 
-# Tests
+## Tests
 ```bash
 [lzw-tools] $ python3 -m tests.make_list_test
 ```
@@ -67,3 +60,8 @@ If you want run simple cli, follow this instructions :
 4. Ensure unit tests
 5. Push to the branch (git push origin my-new-feature)
 6. Create new Pull Request
+
+## Animation
+[GIF images](https://en.wikipedia.org/wiki/GIF) are compressed using the Lempel–Ziv–Welch (LZW) lossless data compression technique.
+
+![](img/animation.gif?raw=true)

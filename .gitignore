@@ -2,5 +2,5 @@
 __pycache__/
 __init__.pyc
 
-file.*
+file*
 *.lzw
