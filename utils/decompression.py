@@ -1,5 +1,6 @@
 from os.path import splitext
 from os.path import getsize
+from utils.make_list import byte_list
 
 
 def decompress(compressed, path):
@@ -7,7 +8,7 @@ def decompress(compressed, path):
     uncompressed = []
     i = 0
     filename, file_extension = splitext(path)
-    f = open(filename + '.txt2', 'wb')
+    f = open(filename + '2.txt', 'wb')
     w = compressed[0]
     compressed.remove(compressed[0])
 
