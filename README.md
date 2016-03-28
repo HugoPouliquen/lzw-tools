@@ -7,7 +7,7 @@ LZW tools for compress &amp; decompress
 Build in **Python 3**
 
 ## Resources
- Algorithme de compression de données sans perte -   [Lempel-Ziv-Welch](https://fr.wikipedia.org/wiki/Lempel-Ziv-Welch)
+[Lempel-Ziv-Welch](https://fr.wikipedia.org/wiki/Lempel-Ziv-Welch)
 
 ## Todo:
 - Compression
@@ -62,5 +62,6 @@ If you want run simple cli, follow this instructions :
 6. Create new Pull Request
 
 ## Animation
+[GIF images](https://en.wikipedia.org/wiki/GIF) are compressed using the Lempel–Ziv–Welch (LZW) lossless data compression technique.
 
 ![](img/animation.gif?raw=true)
