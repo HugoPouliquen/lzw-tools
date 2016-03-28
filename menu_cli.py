@@ -9,6 +9,10 @@ from utils.compression import file_compression
 from utils.decompression import decompress
 from utils.decompression import file_decompression
 
+"""
+This is the cli with pretty interface.
+Curses doc : htp://www.......
+"""
 
 def init_curses():
     stdsrc = curses.initscr()

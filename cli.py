@@ -4,6 +4,11 @@ from utils.compression import file_compression
 from utils.decompression import decompress
 from utils.decompression import file_decompression
 
+"""
+This is the simple cli. To understand read the argparse doc
+htp://www.......
+"""
+
 parser = argparse.ArgumentParser(description='Compress LZW tool')
 
 subparsers = parser.add_subparsers()

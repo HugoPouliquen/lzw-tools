@@ -4,6 +4,12 @@ from utils.make_list import byte_list
 
 
 def decompress(compressed, path):
+    """
+    Purpose: Function for decompress file
+    Description:
+    Param: path for file to compress
+    Return: Name of original file with .txt (for the moment)
+    """
     listAscii, listAsciiSize = byte_list()
     uncompressed = []
     i = 0
@@ -19,7 +25,7 @@ def decompress(compressed, path):
         if int_element < listAsciiSize:
             entry = listAscii[int_element]
         elif int_element == listAsciiSize:
-            entry = w + w  # ERREUR
+            entry = w + w 
         else:
             raise ValueError('Bad uncompressed for: %s' % byte_element)
 
@@ -32,10 +38,18 @@ def decompress(compressed, path):
         listAsciiSize += 1
         w = entry
     f.close()
-    return filename + '.txt2'
+    return filename + '2.txt'
 
 
 def file_decompression(path):
+    """
+    Purpose: Manage function for decompress in file
+    Description: Open file in read and byte mode, put each group of two
+    byte in array. Array is all of text
+    Param: path for file to decompress
+    Return: return result of decompress function, it's name of output original
+    file
+    """
     f = open(path, "rb")
     content = []
     for i in range(int(getsize(path)/2)):
