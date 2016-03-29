@@ -13,11 +13,7 @@ def compress(bytes_text):
     Else, the concatenated bytes are added to the ASCII list. Also, w is added
     to the compressed array and assign to c
     Param: Text (in byte) to compress
-    Return: The filename
-
-    To each value in byte text convert byte on two byte and then
-    if value of result of concat in the list so if result it's in list, continue
-    else you put the result in list and add value in compress array on 2 bytes
+    Return: The compressed content
     """
     w = bytes()
     list_ascii, list_ascii_size = byteList()
