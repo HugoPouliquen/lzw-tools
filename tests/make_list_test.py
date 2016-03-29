@@ -11,7 +11,7 @@ class TestMakeListMethods(unittest.TestCase):
         structure correspond at the ascii table convert in byte.
         Second test is for the size of list.
         """
-        list_ascii, list_ascii_size = byte_list()
+        list_ascii, list_ascii_size = byteList()
         expected_size = 256
         self.assertEqual(list_ascii_size,  expected_size)
 
