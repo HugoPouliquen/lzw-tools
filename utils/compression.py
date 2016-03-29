@@ -10,7 +10,8 @@ def compress(bytes_text):
     Description:
     Each value of the text file is converted and concatenated into two bytes.
     If concatenated bytes are present in the ASCII list, the program continues.
-    Else, the concatenated bytes are added to the ASCII list.
+    Else, the concatenated bytes are added to the ASCII list. Also, w is added
+    to the compressed array and assign to c
     Param: Text (in byte) to compress
     Return: The filename
 
