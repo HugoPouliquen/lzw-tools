@@ -1,12 +1,19 @@
 import unittest
-from utils.make_list import byte_list
+from utils.make_list import byteList
 
 
 class TestMakeListMethods(unittest.TestCase):
-    def test_byte_list(self):
-        listAscii, listAsciiSize = byte_list()
+    def test_byteList(self):
+        """
+        Purpose: Test list size and structure
+        Description: it are a no regression tests.
+        First test it's for the byte structure of the list. Test if this
+        structure correspond at the ascii table convert in byte.
+        Second test is for the size of list.
+        """
+        list_ascii, list_ascii_size = byteList()
         expected_size = 256
-        self.assertEqual(listAsciiSize,  expected_size)
+        self.assertEqual(list_ascii_size,  expected_size)
 
         expected_list = [
             b'\x00\x00', b'\x00\x01', b'\x00\x02', b'\x00\x03', b'\x00\x04',
@@ -57,7 +64,7 @@ class TestMakeListMethods(unittest.TestCase):
             b'\x00\xfc', b'\x00\xfd', b'\x00\xfe', b'\x00\xff'
         ]
 
-        self.assertEqual(listAscii,  expected_list)
+        self.assertEqual(list_ascii,  expected_list)
 
 if __name__ == '__main__':
     unittest.main()
