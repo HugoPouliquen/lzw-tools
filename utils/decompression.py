@@ -5,13 +5,12 @@ from utils.make_list import byteList
 
 def decompress(compressed, path):
     """
-    Purpose: Function for decompress file
-    Description: For begin, put, remove the fist byte couple in decompress array
-    Then, decompress each byte element due to ascii list and pass elemnt on
-    2 bytes to element on 1 byte before write on decompress file. For the rest
-    it's the same of the compress method
-    Param: path for file to compress
-    Return: Name of original file with .txt (for the moment)
+    Purpose: Decompress file
+    Description: Read the file to decompress, remove the fist couple of byte.
+    Then, decompress each byte using the ASCII list and convert it into
+    2 bytes. ??? . And finally write the decompress sequence to the file.
+    Param: Path of file to compress
+    Return: Name of the file in param .txt (for the moment)
     """
     list_ascii, list_ascii_size = byteList()
     uncompressed = []
@@ -46,11 +45,11 @@ def decompress(compressed, path):
 
 def fileDecompression(path):
     """
-    Purpose: Manage function for decompress in file
-    Description: Open file in read and byte mode, put each group of two
-    byte in array. Array is all of text
-    Param: path for file to decompress
-    Return: return result of decompress function, it's name of output original
+    Purpose: Decompresse a file
+    Description: Open a file in read and byte mode. Put each group of two
+    byte in an array.
+    Param: Path of file to decompress
+    Return: Decompressed content
     file
     """
     f = open(path, "rb")

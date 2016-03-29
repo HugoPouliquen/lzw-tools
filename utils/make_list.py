@@ -1,9 +1,9 @@
 def byteList():
     """
-    Purpose: Build bytes list of 256 entries. Corresponds to the ASCII table
-    Description: Between 0-256, each value (1, 2, 3, ...) transform in byte value
-    Param: Nothing
-    Return: list and size of list
+    Purpose: Build a byte list of 256 entries, to match the ASCII table
+    Description: Convert each value, from 0 to 256, to Byte
+    Param: None
+    Return: A list and its size
     """
     list_ascii_size = 256
     list_ascii = []

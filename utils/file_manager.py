@@ -1,9 +1,9 @@
 def inputContent(path):
     """
-    Purpose: Extract byte content from file
-    Description: Open file in read and byte mode and then save his content
-    Param: path of file
-    Return: content of file
+    Purpose: Extract byte content from a file
+    Description: Open a file in read and byte mode and return its content
+    Param: Path of the file to read
+    Return: Content of the file
     """
     f = open(path, 'rb')
     content = f.read()
@@ -13,10 +13,10 @@ def inputContent(path):
 
 def output(compressed, filename):
     """
-    Purpose: Write byte content in file
-    Description: Open file in write and byte mode and then write each item
-    of compressed text in file
-    Param: compressed text and name of the file to write
+    Purpose: Write a byte content in a file
+    Description: Open file in write and byte mode. Then write each item
+    of the compressed text in the file
+    Param: Compressed text and name of the file to write in
     Return: filename
     """
     f = open(filename, 'wb')
