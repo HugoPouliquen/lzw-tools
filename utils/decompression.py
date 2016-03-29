@@ -7,8 +7,8 @@ def decompress(compressed, path):
     """
     Purpose: Decompress file
     Description: Read the file to decompress, remove the fist couple of byte.
-    Then, decompress each byte using the ASCII list and convert it into
-    2 bytes. ??? . And finally write the decompress sequence to the file.
+    Then, decompress each byte using the ASCII list. Finally convert it into
+    1 bytes and write each decompress sequence to the file.
     Param: Path of file to compress
     Return: Name of the file in param .txt (for the moment)
     """
@@ -45,7 +45,7 @@ def decompress(compressed, path):
 
 def fileDecompression(path):
     """
-    Purpose: Decompresse a file
+    Purpose: Decompress a file
     Description: Open a file in read and byte mode. Put each group of two
     byte in an array.
     Param: Path of file to decompress
