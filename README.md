@@ -2,7 +2,7 @@
 [![Circle CI](https://circleci.com/gh/HugoPouliquen/lzw-tools.svg?style=shield)](https://circleci.com/gh/HugoPouliquen/lzw-tools)
 [![Code Climate](https://codeclimate.com/github/HugoPouliquen/lzw-tools/badges/gpa.svg)](https://codeclimate.com/github/HugoPouliquen/lzw-tools)
 
-LZW tools for compress &amp; decompress
+LZW tools to compress &amp; decompress
 
 Build in **Python 3**
 
@@ -12,19 +12,20 @@ Build in **Python 3**
 ## Todo:
 - Compression
     - [x] Build Ascii byte list
-    - [x] Open file in byte
+    - [x] Read file in byte array
     - [x] Compress file
-    - [x] Write compressed content in file.lzw
-    - [ ] File compressed size less than base size
-    - [ ] Insert extension information in compressed file
+    - [x] Write compressed result in file.lzw
+    - [ ] Insert file extension in compressed file
+    - [x] CLI/menu-CLI
 - Decompression
     - [x] Build Ascii byte list
-    - [x] Open file in byte
+    - [x] Read file in byte array
     - [x] Decompress file
-    - [x] Write decompressed content in original file
-    - [x] File decompressed size is equal to original file
-    - [ ] File decompressed content is equal to original content
-    - [ ] Get extension information in compressed file
+    - [x] Write decompressed result in original file
+    - [x] Decompressed file size is equal to original file
+    - [ ] Decompressed file content is the same as the original file content
+    - [ ] Extract file extension from compressed file
+    - [x] CLI/menu-CLI
 - Tests
     - [x] Ascii byte list
     - [ ] Compression
@@ -32,20 +33,25 @@ Build in **Python 3**
     - [x] Automatically build tests : CirleCi
     - [x] Code quality : CodeClimate
 
-## Run with cli-menu
+## Usage
+
+### With menu
+
 ```bash
 [lzw-tools] $ python3 sample.py
 ```
 
-## Run with simple cli
+![CLI-menu](img/menu_preview.png?raw=true)
 
-If you want run simple cli, follow this instructions :
+### Without menu
+
+To simply use the CLI :
 - In `sample.py` file **uncomment**  `import cli` and  **comment** `# import menu_cli`
 ```bash
 [lzw-tools] $ python3 sample.py compress -f file.txt
-# OUTPUT => Your content has compressed in: file.lzw
+# OUTPUT => Your content is now compressed and is available in: file.lzw
 [lzw-tools] $ python3 sample.py decompress -f file.lzw
-# OUTPUT => Your content is in: file.txt
+# OUTPUT => Your content is now decompressed and is available in: file.txt
 ```
 
 ## Tests
@@ -61,7 +67,7 @@ If you want run simple cli, follow this instructions :
 5. Push to the branch (git push origin my-new-feature)
 6. Create new Pull Request
 
-## Animation
-[GIF images](https://en.wikipedia.org/wiki/GIF) are compressed using the Lempel–Ziv–Welch (LZW) lossless data compression technique.
+## Demo
+![S](img/animation.gif?raw=true)
 
-![](img/animation.gif?raw=true)
+For example, [GIF images](https://en.wikipedia.org/wiki/GIF) are compressed using the Lempel–Ziv–Welch (LZW) lossless data compression technique.
