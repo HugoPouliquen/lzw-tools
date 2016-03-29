@@ -23,7 +23,7 @@ Build in **Python 3**
     - [x] Write decompressed result in original file
     - [x] Decompressed file size is equal to original file
     - [ ] Decompressed file content is the same as the original file content
-    - [ ] Extract file extension from compressed file
+    - [ ] Extract file extension from compressed file - [MAGIC NUMBER](https://en.wikipedia.org/wiki/Magic_number_%28programming%29)
     - [x] CLI/menu-CLI
 - Tests
     - [x] Ascii byte list
