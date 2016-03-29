@@ -15,7 +15,6 @@ Build in **Python 3**
     - [x] Read file in byte array
     - [x] Compress file
     - [x] Write compressed result in file.lzw
-    - [ ] Compressed file size is less than base file size
     - [ ] Insert file extension in compressed file
     - [x] CLI/menu-CLI
 - Decompression
