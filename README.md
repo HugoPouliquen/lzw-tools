@@ -38,7 +38,7 @@ Build in **Python 3**
 
 ### With menu
 
-![CLI-menu](img/screenshot.png?raw=true)
+![CLI-menu](img/menu_preview.png?raw=true)
 
 ```bash
 [lzw-tools] $ python3 sample.py
