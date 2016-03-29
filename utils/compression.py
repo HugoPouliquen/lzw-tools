@@ -6,12 +6,17 @@ from utils.make_list import byteList
 
 def compress(bytes_text):
     """
-    Purpose: Compress byte text
-    Description: to each value in byte text convert byte on two byte and then
+    Purpose: Compress a byte text file
+    Description:
+    Each value of the text file is converted and concatenated into two bytes.
+    If concatenated bytes are present in the ASCII list, the program continues.
+    Else, the concatenated bytes are added to the ASCII list.
+    Param: Text (in byte) to compress
+    Return: The filename
+
+    To each value in byte text convert byte on two byte and then
     if value of result of concat in the list so if result it's in list, continue
     else you put the result in list and add value in compress array on 2 bytes
-    Param: text in byte to compress
-    Return: filename
     """
     w = bytes()
     list_ascii, list_ascii_size = byteList()
@@ -31,10 +36,10 @@ def compress(bytes_text):
 
 def fileCompression(path):
     """
-    Purpose: Manage function for compress in file
-    Description: Extract base content, extract basename of file, compress and
-    put in file with lzw extension
-    Param: path for file to compress
+    Purpose: Create a compressed file
+    Description: Extract and compress the content of the file in param to
+    create a new .lzw file
+    Param: Path of file to compress
     Return: LZW file name
     """
     content = inputContent(path)

@@ -6,10 +6,10 @@ class TestMakeListMethods(unittest.TestCase):
     def test_byteList(self):
         """
         Purpose: Test list size and structure
-        Description: it are a no regression tests.
-        First test it's for the byte structure of the list. Test if this
-        structure correspond at the ascii table convert in byte.
-        Second test is for the size of list.
+        Description: It has a no regression tests.
+        The first test is for the byte structure of the list. It test
+        if the following structure matches the ascii table converted in byte
+        The second test check the list size.
         """
         list_ascii, list_ascii_size = byteList()
         expected_size = 256

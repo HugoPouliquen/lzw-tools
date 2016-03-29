@@ -46,9 +46,9 @@ def decompress(compressed, path):
 
 def fileDecompression(path):
     """
-    Purpose: Manage function for decompress in file
-    Description: Open file in read and byte mode, put each group of two
-    byte in array. Array is all of text
+    Purpose: Decompresse a file
+    Description: Open a file in read and byte mode. Put each group of two
+    byte in an array. Array is all of text
     Param: path for file to decompress
     Return: return result of decompress function, it's name of output original
     file
