@@ -1,4 +1,4 @@
-def input_content(path):
+def inputContent(path):
     """
     Purpose: Extract byte content from file
     Description: Open file in read and byte mode and then save his content

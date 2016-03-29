@@ -5,13 +5,13 @@ from libs.curses_browser import open_tty
 from libs.curses_browser import restore_stdio
 from libs.curses_browser import main
 from utils.compression import compress
-from utils.compression import file_compression
+from utils.compression import fileCompression
 from utils.decompression import decompress
-from utils.decompression import file_decompression
+from utils.decompression import fileDecompression
 
 """
-This is the cli with pretty interface.
-Curses doc : htp://www.......
+This is the cli with menu. For understand better read
+Curses doc : https://docs.python.org/3/howto/curses.html
 """
 
 def init_curses():
@@ -89,7 +89,7 @@ try:
             try:
                 path = curses.wrapper(main) # launch new window
             finally:
-                lzw = file_compression(path)
+                lzw = fileCompression(path)
                 restore_stdio(saved_fds, saved_stdout)
                 close_curses(stdsrc)
                 print('Your content has compressed in:', lzw)
@@ -98,7 +98,7 @@ try:
         try:
             path = curses.wrapper(main)
         finally:
-            original = file_decompression(path)
+            original = fileDecompression(path)
             restore_stdio(saved_fds, saved_stdout)
             close_curses(stdsrc)
             print('Your content has decompressed in:', original)

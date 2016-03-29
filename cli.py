@@ -1,12 +1,12 @@
 import argparse
 from utils.compression import compress
-from utils.compression import file_compression
+from utils.compression import fileCompression
 from utils.decompression import decompress
 from utils.decompression import file_decompression
 
 """
-This is the simple cli. To understand read the argparse doc
-htp://www.......
+This is the simple cli. For understand better read
+https://docs.python.org/3/library/argparse.html
 """
 
 parser = argparse.ArgumentParser(description='Compress LZW tool')
@@ -27,7 +27,7 @@ if args.command == 'compress':
     if args.text:
         print(compress(args.string))
     elif args.file:
-        print('Your content has compressed in:', file_compression(args.string))
+        print('Your content has compressed in:', fileCompression(args.string))
 elif args.command == 'decompress':
     if args.text:
         print(decompress(args.string))
